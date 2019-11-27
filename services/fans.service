@@ -1,0 +1,13 @@
+[Unit]
+Description=Dummy Service
+After=multi-user.target
+Conflicts=getty@tty1.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/sbin/fans.py
+StandardInput=tty-force
+User=root
+
+[Install]
+WantedBy=multi-user.target
