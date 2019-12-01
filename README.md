@@ -1,7 +1,7 @@
 Pi Grow! 
 =======================
 
-This project controls hardware via a Raspberry Pi for controlling of environmentaland horticulture hardware.
+This project controls hardware via a Raspberry Pi for controlling of environmental and horticulture hardware.
 
 This project requires Python3, GPIO, and the Adafruit DHT Library
 
