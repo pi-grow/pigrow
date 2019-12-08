@@ -14,17 +14,13 @@ sudo cp ./services/* /lib/systemd/system/
 echo "Reloading systemctl"
 sudo systemctl daemon-reload
 
-echo "Enabling Temperature Monitoring"
-sudo systemctl enable dhtlogger.service
-sudo systemctl start dhtlogger.service
-
-echo "Firing Up the Far Red LED's!"
-sudo systemctl enable farred.service
-sudo systemctl start farred.service
-
 echo "Spinning up Oscillating Circulation Fans!"
 sudo systemctl enable fans.service
 sudo systemctl start fans.service
+
+echo "Firing RED LED's"
+sudo systemctl enable red-led.service
+sudo systemctl start red-led.service
 
 echo "Done!"
 echo "Ready to Grow!"

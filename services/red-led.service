@@ -5,7 +5,7 @@ Conflicts=getty@tty1.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /usr/local/sbin/farred.py
+ExecStart=/usr/bin/python3 /usr/local/sbin/red-led.py
 StandardInput=tty-force
 User=root
 
