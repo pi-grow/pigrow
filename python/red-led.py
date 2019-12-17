@@ -1,13 +1,36 @@
 #!/usr/bin/python3
+import sys
+import signal
+import time
+import datetime
+import RPi.GPIO as GPIO
+from sys import exit
 
-import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
-from time import sleep # Import the sleep function from the time module
-GPIO.setwarnings(False) # Ignore warning for now
-GPIO.setmode(GPIO.BCM) # Use physical pin numbering
-GPIO.setup(18, GPIO.OUT, initial=GPIO.LOW) # Set pin 8 to be an output pin and set initial value to low (off)
-while True: # Run forever
-    GPIO.output(18, GPIO.HIGH) # Turn on
-    sleep(1) # Sleep for 1 seconds
-    GPIO.output(18, GPIO.LOW) # Turn off
-    sleep(86399) # Sleep for 86399 seconds
+GPIO.setwarnings(False)
+
+def signal_handler(signal, frame):
+  sys.exit(0)
+signal.signal(signal.SIGINT, signal_handler)
+
+def main ():
+    LED =18
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(LED, GPIO.OUT)
+
+    while (True):
+        now = datetime.datetime.now()
+        todayon = now.replace(hour = 4, minute=45, second =0, microsecond =0)
+        todayoff = now.replace(hour = 23, minute=45, second =0, microsecond =0)
+        turnon = now>todayon and now<todayoff
+        turnoff = now>todayoff
+
+        if(turnon == True):
+                GPIO.output(LED, GPIO.LOW)
+                time.sleep(1)
+
+        if(turnoff == True):
+                GPIO.output(LED, GPIO.HIGH)
+
+if __name__ == '__main__':
+    main()
 exit()
