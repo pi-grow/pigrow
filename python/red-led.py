@@ -19,8 +19,8 @@ def main ():
 
     while (True):
         now = datetime.datetime.now()
-        todayon = now.replace(hour = 2, minute=45, second =0, microsecond =0)
-        todayoff = now.replace(hour = 23, minute=15, second =0, microsecond =0)
+        todayon = now.replace(hour = =7, minute=30, second =0, microsecond =0)
+        todayoff = now.replace(hour = 20, minute=30, second =0, microsecond =0)
         turnon = now>todayon and now<todayoff
         turnoff = now>todayoff
 
